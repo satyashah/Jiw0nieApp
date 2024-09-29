@@ -18,6 +18,7 @@ const permissions: HealthKitPermissions = {
             AppleHealthKit.Constants.Permissions.DistanceWalkingRunning,
             AppleHealthKit.Constants.Permissions.SleepAnalysis,
             AppleHealthKit.Constants.Permissions.HeartRate,
+            AppleHealthKit.Constants.Permissions.HeartRateVariability,
         ],
         write: [],
     },

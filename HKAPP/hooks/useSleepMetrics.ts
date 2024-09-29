@@ -27,7 +27,7 @@ const useSleepMetrics = (date: Date) => {
 
         const options: HealthInputOptions = {
             date: date.toISOString(),
-            includeManuallyAdded: true, // allow to add data manually
+            includeManuallyAdded: true, // 
 
             /* startDate is required in options for sleep */
             startDate: new Date(date.setHours(0, 0, 0, 0)).toISOString(), // Beginning of the day
