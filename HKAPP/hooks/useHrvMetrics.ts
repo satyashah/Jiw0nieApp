@@ -53,36 +53,26 @@ const useActivityMetrics = (date: Date) => {
             // setHrv(results.value);
 
             let hrvVal = 0;
-            results.forEach(sample => {
-                // startDate = new Date(sample.startDate).getTime();
 
-                // const startDateTime = new Date(sample.startDate).getTime();
-                // const endDateTime = new Date(sample.endDate).getTime();
+            let count = results.length;
 
-                // console.log("start date ; ", sample.startDate);
+            const totalHrv = results.reduce((sum: number, cur) => {
+                const startDate = new Date(cur.startDate).getTime();
+                const endDate = new Date(cur.endDate).getTime();
+                return sum + cur.value
+            }, 0);
 
-                // const totalInbed = endDateTime - startDateTime; //  millisec
+            let averageHrv = 0;
+            if (count > 0)
+                averageHrv = Math.round(totalHrv / count * 1000)
+            else averageHrv = 0;
 
-                // inbedHours = totalInbed / (1000 * 60 * 60); //  hours
-                // inbedMins = (totalInbed % (1000 * 60 * 60)) / (1000 * 60); //  mins
+            setHrv(averageHrv);
 
-                /* format date */
-                // setInBedDate(new Date(sample.startDate).toLocaleString());
-                // formattedDate = new Date(sample.startDate).toLocaleString(undefined, {
-                //     month: 'numeric',
-                //     day: 'numeric',
-                //     hour: 'numeric',
-                //     minute: 'numeric',
-                //     hour12: true,
-                // });
-                // setInBedDate(formattedDate);
-
-                console.log(`hrv-val: ${sample.value}`);
-                hrvVal = sample.value;
-                // setHrv(sample.value);
-
-            });
-            setHrv(hrvVal);
+            // results.forEach(sample => {
+            //     console.log(`hrv-val: ${sample.value}`);
+            //     hrvVal = sample.value;
+            // });
 
         });
 
